@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { login, startGoogleLogin, startLoginEmailPassword } from "../../actions/auth";
 
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(startLoginEmailPassword(email, password));
+  };
+
+  const handleGoogleLogin = () =>{
+    dispatch(startGoogleLogin());
+  }
   return (
-    <div class="login__main">
+    <div className="login__main animate__animated animate__fadeIn">
       <h1>Login</h1>
-      <form method="post">
+      <form onSubmit={handleSubmit}>
         <input
           className="login__input"
-          type="text"
+          type="email"
           name="u"
-          placeholder="Username"
+          placeholder="Email"
           required="required"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="login__input"
@@ -18,30 +34,51 @@ export const Login = () => {
           name="p"
           placeholder="Password"
           required="required"
+          onChange={(e) => setPassword(e.target.value)}
         />
         <div className="row">
-          <div class="col-md-6">
-            <button type="submit" class="login btn btn-primary btn-block btn-large">
-            <i class="bi bi-box-arrow-in-right"></i> Login
+          <div className="col-md-6">
+            <button
+              type="submit"
+              className="login btn btn-primary btn-block btn-large"
+            >
+              <i className="bi bi-box-arrow-in-right"></i> Login
             </button>
           </div>
-          <div class="col-md-6">
-            <button type="submit" class="register btn btn-primary btn-block btn-large">
-            <i class="bi bi-person-plus"></i> Register
+          <div className="col-md-6">
+          <Link to="/auth/register"> 
+
+          <button
+              type="button"
+              className="register btn btn-primary btn-block btn-large"
+
+            >
+                        <i className="bi bi-person-plus"></i> Register 
+
             </button>
+
+          
+          
+          
+          
+          </Link>
+
           </div>
         </div>
 
-        <hr/>
+        <hr />
 
         <div className="row">
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-primary btn-block btn-large">
-              Login with Google <i class="bi bi-google"></i>
+          <div className="col-md-12">
+            <button 
+            type="button" 
+            className="btn btn-primary btn-block btn-large"
+            onClick={handleGoogleLogin}
+            >
+              Login with Google <i className="bi bi-google"></i>
             </button>
           </div>
         </div>
-        
       </form>
     </div>
   );
