@@ -1,8 +1,13 @@
 import React from "react";
+import { NavBar } from "../components/navbar/NavBar";
 
 export const HomeScreen = () => {
   return (
+    <>
+              <NavBar />
+
     <div className="container">
+
       <div class="jumbotron">
         <h1 class="display-4 mt-5">HomeScreen</h1>
         <p class="lead">
@@ -14,10 +19,8 @@ export const HomeScreen = () => {
           It uses utility classes for typography and spacing to space content
           out within the larger container.
         </p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">
-          Learn more
-        </a>
       </div>
     </div>
+    </>
   );
 };

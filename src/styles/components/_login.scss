@@ -156,6 +156,13 @@
 
 a {text-decoration:none;
 color: white}
+.spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031; /* High z-index so it is on top of the page */
+  top: calc( 50% - ( 100px / 2) ); /* where ... is the element's height */
+  right: calc( 50% - ( 40px / 2) ); /* where ... is the element's width */
+}
 
 a:hover {
   color: #333333;
