@@ -1,0 +1,25 @@
+.navbar
+{
+   background-color: rgba(0, 0, 0, 0.472);
+   border-bottom: solid rgba(0, 0, 0, 0.15) 1px;
+}
+
+.navbar-nav .nav-item{
+    transition: all 0.3s;
+}
+
+.navbar-nav .nav-item:hover{
+    padding-left: 15px;
+
+    padding-right: 15px;
+    background-color: rgba(255, 255, 255, 0.089);
+}
+.navbar-toggler-icon{
+
+    color: white;
+}
+
+.navbar-brand{
+    padding-right: 25px;
+    border-right: solid rgba(0, 0, 0, 0.198) 2px;
+}

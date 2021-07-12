@@ -1,18 +1,22 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { startLogout } from "../../actions/auth";
 
 export const NavBar = () => {
+  const { name } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(startLogout());
-  }
+  };
   return (
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
+        <h4 class="navbar-brand">
+           Welcome {name}
+        </h4>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -22,54 +26,46 @@ export const NavBar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon">
+            <i class="bi bi-justify"></i>
+          </span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
+          <ul class="navbar-nav me-auto  mb-2 mb-lg-0">
+            <li class="nav-item mx-5">
+              <NavLink
+                to="/home"
+                activeStyle={{
+                  fontWeight: "bold",
+                  color: "white",
+                }}
+              >
                 Home
-              </a>
+              </NavLink>
             </li>
 
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+            <li class="nav-item mx-2">
+              <NavLink
+                to="/home"
+                activeStyle={{
+                  fontWeight: "bold",
+                  color: "white",
+                }}
               >
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
+                Top films
+              </NavLink>
             </li>
+
+            
           </ul>
 
           <div class="d-flex">
-      <button 
-      onClick={handleLogout}
-      class="btn btn-outline-primary" type="button">Logout</button>
-    </div>
-
+            
+            <button onClick={handleLogout} class=" login__input" type="button">
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </nav>

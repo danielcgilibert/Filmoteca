@@ -1,0 +1,20 @@
+.card{
+    color: rgb(18, 132, 224);
+    background-color: black;
+    width: 19rem;
+    height: 30rem;
+    padding: 55px;
+    background-position: center center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.35); 
+box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.35);
+    transition: all 0.2s;
+
+}
+.card:hover {
+    transform: translateY(-10px);
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+box-shadow: 5px 5px 15px 5px #000000;
+
+}

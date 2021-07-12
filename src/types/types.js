@@ -9,4 +9,8 @@ export const types = {
     uiStartLoading: '[UI] Start Loading',
     uiFinishLoading: '[UI] Finish Loading',
 
+    mvLoadMoviesHome: '[MV] Load Movies Home',
+    mvNextPageMoviesHome: '[MV] Next Page Home',
+
+
 }
