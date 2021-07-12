@@ -6,14 +6,14 @@ export const ListMovies = () => {
   const { moviesHome } = useSelector((state) => state.mv);
 
   return (
-    <div className="row">
+    <>
       {moviesHome.map((film) => {
         return (
-          <div class="col-md-3">
+          <div class="d-flex justify-content-center col-md-12 col-lg-4 col-xl-3">
             <CardMovie key={film.id} film={film} />
           </div>
         );
       })}
-    </div>
+      </>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 export const CardMovie = ({film}) => {
 
-  const {title, overview, poster_path} = film;
+  const { poster_path} = film;
 
   return (
     <div class="pointer card mt-2" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original//${poster_path})`  }}>

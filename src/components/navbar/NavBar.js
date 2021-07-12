@@ -4,18 +4,24 @@ import { NavLink } from "react-router-dom";
 import { startLogout } from "../../actions/auth";
 
 export const NavBar = () => {
-  const { name } = useSelector((state) => state.auth);
-
+  const { name, photo } = useSelector((state) => state.auth);
+  const shortName = name && name.split(" ");
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(startLogout());
   };
+  // console.log(name&&name.split(" "));
+
   return (
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <h4 class="navbar-brand">
-           Welcome {name}
-        </h4>
+        <div class="navbar-brand px-4">
+          <img
+            src="https://fibabc.abc.es/wp-content/uploads/sites/23/2017/10/file-video-icon.png"
+            width="40"
+            height="40"
+          />{" "}
+        </div>
 
         <button
           class="navbar-toggler"
@@ -56,15 +62,87 @@ export const NavBar = () => {
                 Top films
               </NavLink>
             </li>
-
-            
           </ul>
 
           <div class="d-flex">
-            
-            <button onClick={handleLogout} class=" login__input" type="button">
-              Logout
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar-list-4"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
             </button>
+
+            <div>
+              <div class="container h-100">
+                <div class="d-flex justify-content-center h-100">
+                  <div class="searchbar">
+                    <input
+                      class="search_input"
+                      type="text"
+                      name=""
+                      placeholder="Search..."
+                    />
+                    <a class="search_icon">
+                      <i class="bi bi-search"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+
+            <div class="dropdown d-flex">
+              <button
+                class="btn bg-custom  dropdown-toggle"
+                type="button"
+                id="dropdownMenu2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src={
+                    photo
+                      ? photo
+                      : "https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                  }
+                  width="40"
+                  height="40"
+                  class="rounded-circle m-2"
+                />
+
+                {name ? shortName[0] : name}
+              </button>
+
+              <ul
+                class="dropdown-menu animate__animated animate__fadeIn"
+                aria-labelledby="dropdownMenu2"
+              >
+                <li>
+                  <button class="dropdown-item" type="button">
+                    <i class="bi bi-person-lines-fill"></i> Profile
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item" type="button">
+                    <i class="bi bi-star-fill"></i> Favorites
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    class="dropdown-item"
+                    type="button"
+                  >
+                    <i class="bi bi-door-open-fill"></i> Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

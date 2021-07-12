@@ -1,5 +1,6 @@
 import { types } from "../types/types";
 import { loadMovies } from "../helpers/loadMoviesHome";
+import { finishLoading, startLoading } from "./auth";
 
 export const loadMoviesHome = (movies) => ({
     type: types.mvLoadMoviesHome,
@@ -22,10 +23,14 @@ export const startLoadMoviesHome = () => {
   };
 
   export const nextPageLoadMoviesHome = (page) => {
+    
     return (dispatch) => {  
+      dispatch(startLoading());
       dispatch(nextPageHome());
         loadMovies(page).then( ({results }) => {
             dispatch(loadMoviesHome(results))
+            dispatch(finishLoading());
+
         })
 
      

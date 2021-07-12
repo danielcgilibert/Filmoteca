@@ -1,13 +1,17 @@
 import { types } from "../types/types";
 import { firebase, googleAuthProvider } from "../firebase/config";
 
-export const login = (uid, displayName) => ({
-  type: types.login,
-  payload: {
-    uid,
-    displayName,
-  },
-});
+export const login = (uid, displayName, photo=null) => {
+  console.log(photo);
+  return{
+    type: types.login,
+    payload: {
+      uid,
+      displayName,
+      photo
+    },
+  }
+};
 
 export const setError = (msgError) => ({
   type: types.uiSetError,
@@ -69,7 +73,7 @@ export const startGoogleLogin = () => {
       .signInWithPopup(googleAuthProvider)
       .then(({ user }) => {
         dispatch(removeError())
-        dispatch(login(user.uid, user.displayName));
+        dispatch(login(user.uid, user.displayName, user.photoURL));
       }).catch(({message}) => {
         dispatch(setError(message))
       })
