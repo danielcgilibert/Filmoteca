@@ -3,7 +3,7 @@ import React from "react";
 import { ListMovies } from "../listMovies/ListMovies";
 import { CardSearch } from "../cardSearch/CardSearch";
 
-export const ModalSearch = ({ modalIsOpen, setIsOpen }) => {
+export const ModalSearch = ({ modalIsOpen, setIsOpen, search }) => {
   function openModal() {
     setIsOpen(true);
   }
@@ -12,7 +12,6 @@ export const ModalSearch = ({ modalIsOpen, setIsOpen }) => {
     setIsOpen(false);
   }
   return (
-
     <Modal
       contentClassName="modal-search"
       centered
@@ -21,19 +20,23 @@ export const ModalSearch = ({ modalIsOpen, setIsOpen }) => {
       onHide={closeModal}
     >
       <Modal.Body>
-          <div class="row">
+        <div class="row">
           <div class="col-md-12 col-lg-12">
-
-            <CardSearch />
-            <CardSearch />
-            <CardSearch />
-            
-            </div>
-
-            </div>
-
+            {search.length > 0 ? (
+              search.map((movieSearch) => {
+                return <CardSearch movieSearch={movieSearch} />;
+              })
+            ) : (
+              <div class="col-md-12 col-lg-12 text-center mt-5">
+                <h1>Pelicuna no encontrada</h1>
+                <h1>
+                  <i class="bi bi-emoji-frown"></i>
+                </h1>
+              </div>
+            )}
+          </div>
+        </div>
       </Modal.Body>
     </Modal>
-
   );
 };

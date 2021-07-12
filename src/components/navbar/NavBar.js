@@ -2,27 +2,30 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { startLogout } from "../../actions/auth";
+import { searchMovie } from "../../actions/movies";
 import { ModalSearch } from "../modalSearch/ModalSearch";
 
 export const NavBar = () => {
   const { name, photo } = useSelector((state) => state.auth);
-  const [search, setSearch] = React.useState("")
+  const [searchInput, setSearchInput] = React.useState("")
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
+  const {search} = useSelector(state => state.mv)
   const shortName = name && name.split(" ");
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(startLogout());
   };
 
-  const handleSearch = (e) =>{
+  const handleSearch = (e) => {
     e.preventDefault();
+    dispatch(searchMovie(searchInput))
     setIsOpen(true)
+    setSearchInput("");
   }
 
   return (
     <>
-      {modalIsOpen&&<ModalSearch modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />}
+      {modalIsOpen&&<ModalSearch search={search} modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />}
 
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -97,7 +100,10 @@ export const NavBar = () => {
                         type="text"
                         name=""
                         placeholder="Search..."
-                        onChange={(e) => setSearch(e.target.value)}
+                        required
+                        minlength="1"
+                        value={searchInput  }
+                        onChange={(e) => setSearchInput(e.target.value)}
                       />
                       <a class="search_icon">
                         <i class="bi bi-search"></i>
