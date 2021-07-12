@@ -15,8 +15,8 @@ export const HomeScreen = () => {
   };
 
   const handleScroll = () => {
-    window.scrollTo(0,document.body.scrollHeight);
-  }
+    window.scrollTo(0, document.body.scrollHeight);
+  };
 
   useEffect(() => {
     dispatch(startLoadMoviesHome());
@@ -46,12 +46,11 @@ export const HomeScreen = () => {
             </div>
           ) : (
             <>
-            <div className="d-flex flex-row-reverse mt-3">
-              <button onClick={handleScroll} className="btn">
-                <i class="bi bi-arrow-down botonAbajo"></i>
-              </button>
-
-            </div>
+              <div className="d-flex flex-row-reverse mt-3">
+                <button onClick={handleScroll} className="btn">
+                  <i class="bi bi-arrow-down botonAbajo"></i>
+                </button>
+              </div>
 
               <ListMovies />
               <button onClick={handleNextPage} className="login__input mt-3">

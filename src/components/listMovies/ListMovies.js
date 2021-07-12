@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { CardMovie } from "../cardMovie/CardMovie";
+import { CardSearch } from "../cardSearch/CardSearch";
 
 export const ListMovies = () => {
   const { moviesHome } = useSelector((state) => state.mv);

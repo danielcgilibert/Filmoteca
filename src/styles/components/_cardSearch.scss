@@ -1,0 +1,30 @@
+.cardSearch {
+    color:black;
+    width: 100%;
+    min-height: 450px;
+    padding: 15px;
+    background-color: white;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.35); 
+box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.35);
+    transition: all 0.2s;
+
+}
+.cardSearch:hover {
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(255, 255, 255, 0.35); 
+box-shadow: 5px 5px 15px 5px rgba(255, 252, 252, 0.35);
+}
+.imageSearch{
+    border: solid rgba(82, 2, 2, 0.198) 4px;
+    border-radius: 15px;
+    min-height: 450px;
+
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    z-index: auto;
+    background-size: cover !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+
+}
