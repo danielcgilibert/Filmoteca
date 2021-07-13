@@ -31,10 +31,10 @@ export const Login = () => {
     <div className="login__main animate__animated animate__fadeIn">
       {msgError && (
         <div
-          class="animate__animated animate__bounceIn alert alert-danger text-center"
+        className="animate__animated animate__bounceIn alert alert-danger text-center"
           role="alert"
         >
-          <i class="bi bi-bell"></i> {msgError}
+          <i className="bi bi-bell"></i> {msgError}
         </div>
       )}
 
@@ -60,12 +60,12 @@ export const Login = () => {
           <div className={loading ? "col-md-12" : "col-md-6"}>
             {loading ? (
               <button
-                class="login btn btn-primary btn-block btn-large"
+              className="login btn btn-primary btn-block btn-large"
                 type="button"
                 disabled
               >
                 <span
-                  class="spinner-border spinner-border-sm"
+                  className="spinner-border spinner-border-sm"
                   role="status"
                   aria-hidden="true"
                 ></span>

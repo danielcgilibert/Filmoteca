@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { CardMovie } from "../cardMovie/CardMovie";
-import { CardSearch } from "../cardSearch/CardSearch";
 
 export const ListMovies = () => {
   const { moviesHome } = useSelector((state) => state.mv);
@@ -10,8 +9,8 @@ export const ListMovies = () => {
     <>
       {moviesHome.map((film) => {
         return (
-          <div class="d-flex justify-content-center col-md-12 col-lg-4 col-xl-3">
-            <CardMovie key={film.id} film={film} />
+          <div key={film.id} className="d-flex justify-content-center col-md-12 col-lg-4 col-xl-3">
+            <CardMovie key={film.id} film={film} id={film.id} />
           </div>
         );
       })}

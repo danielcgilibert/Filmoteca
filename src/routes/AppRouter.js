@@ -33,9 +33,9 @@ export const AppRouter = () => {
 
   if (checking) {
     return (
-      <div class="spinner text-center ">
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div className="spinner text-center ">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       </div>
     );
@@ -46,8 +46,7 @@ export const AppRouter = () => {
             <Switch>
             <PublicRoute  path="/auth" component={AuthRouter} isAuthenticated={isLoggedIn} />
             <PrivateRoute path="/home" component={HomeScreen} isAuthenticated={isLoggedIn} />
-            <Route path="/details" component={DetailsScreen}  />
-
+            <PrivateRoute path="/details/:id" component={DetailsScreen} isAuthenticated={isLoggedIn} />
             <Redirect to="/auth/login" />
           </Switch>
         </div>

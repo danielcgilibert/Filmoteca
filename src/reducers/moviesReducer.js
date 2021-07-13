@@ -3,7 +3,8 @@ import { types } from "../types/types";
 const initialState = {
   moviesHome: [],
   page: 1,
-  search:[]
+  search:[],
+  detailsMovie: []
 };
 
 export const moviesReducer = (state = initialState, action) => {
@@ -24,6 +25,12 @@ export const moviesReducer = (state = initialState, action) => {
       return {
         ...state,
         search: [...action.payload]
+      };
+
+      case types.mvDetailsMovie:
+      return {
+        ...state,
+        detailsMovie: [action.payload]
       };
 
     default:

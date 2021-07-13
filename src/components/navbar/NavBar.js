@@ -27,9 +27,9 @@ export const NavBar = () => {
     <>
       {modalIsOpen&&<ModalSearch search={search} modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />}
 
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <div class="navbar-brand px-4">
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid">
+          <div className="navbar-brand px-4">
             <img
               src="https://fibabc.abc.es/wp-content/uploads/sites/23/2017/10/file-video-icon.png"
               width="40"
@@ -38,7 +38,7 @@ export const NavBar = () => {
           </div>
 
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -46,14 +46,14 @@ export const NavBar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon">
-              <i class="bi bi-justify"></i>
+            <span className="navbar-toggler-icon">
+              <i className="bi bi-justify"></i>
             </span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto  mb-2 mb-lg-0">
-              <li class="nav-item mx-5">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto  mb-2 mb-lg-0">
+              <li className="nav-item mx-5">
                 <NavLink
                   to="/home"
                   activeStyle={{
@@ -65,7 +65,7 @@ export const NavBar = () => {
                 </NavLink>
               </li>
 
-              <li class="nav-item mx-2">
+              <li className="nav-item mx-2">
                 <NavLink
                   to="/home"
                   activeStyle={{
@@ -78,9 +78,9 @@ export const NavBar = () => {
               </li>
             </ul>
 
-            <div class="d-flex">
+            <div className="d-flex">
               <button
-                class="navbar-toggler"
+                className="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
                 data-target="#navbar-list-4"
@@ -88,34 +88,34 @@ export const NavBar = () => {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
               </button>
 
               <div>
-                <div class="container h-100">
-                  <div class="d-flex justify-content-center h-100">
-                    <form onSubmit={handleSearch}  class="searchbar" >
+                <div className="container h-100">
+                  <div className="d-flex justify-content-center h-100">
+                    <form onSubmit={handleSearch}  className="searchbar" >
                       <input
-                        class="search_input"
+                        className="search_input"
                         type="text"
                         name=""
                         placeholder="Search..."
                         required
-                        minlength="1"
+                        minLength="1"
                         value={searchInput  }
                         onChange={(e) => setSearchInput(e.target.value)}
                       />
-                      <a class="search_icon">
-                        <i class="bi bi-search"></i>
+                      <a className="search_icon">
+                        <i className="bi bi-search"></i>
                       </a>
                     </form>
                   </div>
                 </div>
               </div>
 
-              <div class="dropdown d-flex">
+              <div className="dropdown d-flex">
                 <button
-                  class="btn bg-custom  dropdown-toggle"
+                  className="btn bg-custom  dropdown-toggle"
                   type="button"
                   id="dropdownMenu2"
                   data-bs-toggle="dropdown"
@@ -129,33 +129,33 @@ export const NavBar = () => {
                     }
                     width="40"
                     height="40"
-                    class="rounded-circle m-2"
+                    className="rounded-circle m-2"
                   />
 
                   {name ? shortName[0] : name}
                 </button>
 
                 <ul
-                  class="dropdown-menu animate__animated animate__fadeIn"
+                  className="dropdown-menu animate__animated animate__fadeIn"
                   aria-labelledby="dropdownMenu2"
                 >
                   <li>
-                    <button class="dropdown-item" type="button">
-                      <i class="bi bi-person-lines-fill"></i> Profile
+                    <button className="dropdown-item" type="button">
+                      <i className="bi bi-person-lines-fill"></i> Profile
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" type="button">
-                      <i class="bi bi-star-fill"></i> Favorites
+                    <button className="dropdown-item" type="button">
+                      <i className="bi bi-star-fill"></i> Favorites
                     </button>
                   </li>
                   <li>
                     <button
                       onClick={handleLogout}
-                      class="dropdown-item"
+                      className="dropdown-item"
                       type="button"
                     >
-                      <i class="bi bi-door-open-fill"></i> Logout
+                      <i className="bi bi-door-open-fill"></i> Logout
                     </button>
                   </li>
                 </ul>

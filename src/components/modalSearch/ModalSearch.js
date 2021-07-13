@@ -20,17 +20,17 @@ export const ModalSearch = ({ modalIsOpen, setIsOpen, search }) => {
       onHide={closeModal}
     >
       <Modal.Body>
-        <div class="row">
-          <div class="col-md-12 col-lg-12">
+        <div className="row">
+          <div className="col-md-12 col-lg-12">
             {search.length > 0 ? (
               search.map((movieSearch) => {
                 return <CardSearch movieSearch={movieSearch} />;
               })
             ) : (
-              <div class="col-md-12 col-lg-12 text-center mt-5">
+              <div className="col-md-12 col-lg-12 text-center mt-5">
                 <h1>Pelicuna no encontrada</h1>
                 <h1>
-                  <i class="bi bi-emoji-frown"></i>
+                  <i className="bi bi-emoji-frown"></i>
                 </h1>
               </div>
             )}

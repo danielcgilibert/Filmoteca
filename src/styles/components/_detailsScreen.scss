@@ -1,12 +1,20 @@
 .imagenPortada {
   min-width: 100%;
   min-height: 100vh;
-  background-position: center;
-  background-size: cover;
+  background-size: cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center;              /* optional, center the image */
+  background-color: rgb(27, 27, 27);
+
+}
+.todo{
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+
 }
 .estrellas {
-  padding-right: 10px;
-  color: rgba(50, 4, 202, 0.671);
+  padding: 5px;
+  color: rgba(219, 188, 9, 0.931);
 }
 .genero {
   background-color: rgba(50, 4, 202, 0.438);
@@ -29,7 +37,7 @@
 }
 
 .estrellaSinPunto {
-  padding-right: 10px;
+  padding: 5px;
   color: rgba(248, 241, 250, 0.671);
 }
 .botonTrailer {
@@ -81,6 +89,19 @@
   -webkit-box-shadow: 5px 5px 14px 5px rgba(0, 0, 0, 0.86);
   box-shadow: 5px 5px 14px 5px rgba(0, 0, 0, 0.86);
   transition: all 0.3s;
+}
+
+
+.botonCast {
+  min-width: 100%;
+  background-color: rgba(39, 5, 151, 0.767) !important;
+  color: white;
+  font-size: large;
+  transition: all 0.3s;
+}
+
+.botonCast:hover {
+  padding: 15px;
 }
 
 .divFotoActor {

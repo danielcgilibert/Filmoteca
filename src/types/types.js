@@ -12,6 +12,7 @@ export const types = {
     mvLoadMoviesHome: '[MV] Load Movies Home',
     mvNextPageMoviesHome: '[MV] Next Page Home',
     mvSearchMovie: '[MV] Search Movie',
+    mvDetailsMovie: '[MV] load Details Movie',
 
 
 }
