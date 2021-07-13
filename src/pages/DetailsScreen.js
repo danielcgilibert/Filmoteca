@@ -19,6 +19,7 @@ export const DetailsScreen = () => {
       release_date,
       vote_average,
       title,
+      genres
     } = detailsMovie[0][0];
 
     var { cast } = detailsMovie[0][1];
@@ -78,12 +79,14 @@ export const DetailsScreen = () => {
                           {overview || "no hay descripción"}{" "}
                         </p>
                         <div className="fs-2 mt-4">
-                          <span className="badge genero">Acción</span>
-                          <span className="badge genero">Ciencia ficción</span>
-                          <span className="badge genero">Thriller</span>
-                          <span className="badge genero">Aventura</span>
-                          <span className="badge genero">Terror</span>
-                          <span className="badge genero">Comedia</span>
+                          {
+                            genres.map(genero =>{
+                              return(
+                                <span className="badge genero">{genero.name}</span>
+
+                              )
+                            })
+                          }
                         </div>
 
                         <div className="mt-4">
@@ -96,17 +99,18 @@ export const DetailsScreen = () => {
                       <div className="col-md-12 mt-2">
                         <hr />
                         <div className="fs-2 mt-4">
-                          <button
-                            className="btn btn-primary botonCast px-5"
-                            onClick={() => setCastOpen(!castOpen)}
-                          >
-                            <i className="bi bi-file-person"></i> Cast
-                          </button>
-                          {castOpen && (
-                            <div className="row d-flex justify-content-center animate__animated animate__fadeIn">
-                              {cast.map((actor) => {
+                            CAST
+                        </div>
+                        <div className="row d-flex justify-content-center animate__animated animate__fadeIn">
+                              {cast.map((actor,index) => {
                                 console.log(actor);
+                                if(index>10){
+                                  return true
+
+                                }
+
                                 return (
+                                  
                                   <div className="col-md-3 divFotoActor">
                                     <img
                                       src={
@@ -123,9 +127,9 @@ export const DetailsScreen = () => {
                                 );
                               })}
                             </div>
-                          )}{" "}
-                        </div>
+
                       </div>
+
                     </div>
                   </div>
                 </div>

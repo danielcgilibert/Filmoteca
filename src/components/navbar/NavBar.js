@@ -66,7 +66,7 @@ export const NavBar = () => {
               </li>
 
               <li className="nav-item mx-2">
-                <NavLink
+                {/* <NavLink
                   to="/home"
                   activeStyle={{
                     fontWeight: "bold",
@@ -74,7 +74,7 @@ export const NavBar = () => {
                   }}
                 >
                   Top films
-                </NavLink>
+                </NavLink> */}
               </li>
             </ul>
 
