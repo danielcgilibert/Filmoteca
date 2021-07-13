@@ -1,0 +1,94 @@
+.imagenPortada {
+  min-width: 100%;
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+.estrellas {
+  padding-right: 10px;
+  color: rgba(50, 4, 202, 0.671);
+}
+.genero {
+  background-color: rgba(50, 4, 202, 0.438);
+  border-radius: 15px;
+  padding: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+  transition: all 0.2s;
+}
+
+.genero:hover {
+  background-color: rgba(50, 4, 202, 0.692);
+}
+
+.logoCompania {
+  width: 150px !important;
+  height: 110px !important;
+  border-radius: 15px !important;
+  background-color: rgba(50, 4, 202, 0.116);
+}
+
+.estrellaSinPunto {
+  padding-right: 10px;
+  color: rgba(248, 241, 250, 0.671);
+}
+.botonTrailer {
+  min-width: 100%;
+  background-color: rgba(50, 4, 202, 0.972) !important;
+  color: white;
+  font-size: large;
+  transition: all 0.3s;
+}
+
+.botonTrailer:hover {
+  padding: 15px;
+}
+.caratula {
+  width: 100% !important;
+  height: 550px !important;
+  border: 5px solid rgba(0, 0, 0, 0.972) !important;
+}
+.datosPelicula {
+  background-color: rgba(0, 0, 0, 0.719);
+  min-height: 100vh;
+}
+.imagenPortada img {
+  border-radius: 10px;
+  border: 5px solid rgba(0, 0, 0, 0.356);
+  width: 100%;
+  height: 800px;
+}
+
+.imagenPresentacion {
+  background-color: black;
+  width: 300px;
+  min-height: 400px;
+  color: white;
+}
+
+.descripcion {
+  border-right: solid 1px rgba(255, 253, 253, 0.26);
+}
+
+.actorFoto {
+  width: 200px !important;
+  margin: 10px;
+  height: 300px !important;
+  border-radius: 25px !important;
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  background-color: rgba(0, 0, 0, 0.383);
+  -webkit-box-shadow: 5px 5px 14px 5px rgba(0, 0, 0, 0.86);
+  box-shadow: 5px 5px 14px 5px rgba(0, 0, 0, 0.86);
+  transition: all 0.3s;
+}
+
+.divFotoActor {
+  font-size: 20px;
+  text-align: center;
+}
+
+.actorFoto:hover {
+  width: 230px !important;
+  height: 350px !important;
+}

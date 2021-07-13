@@ -12,6 +12,7 @@ import { login } from "../actions/auth";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 import { AuthRouter } from "./AuthRouter";
+import { DetailsScreen } from "../pages/DetailsScreen";
 
 export const AppRouter = () => {
   const [checking, setChecking] = useState(true);
@@ -45,6 +46,8 @@ export const AppRouter = () => {
             <Switch>
             <PublicRoute  path="/auth" component={AuthRouter} isAuthenticated={isLoggedIn} />
             <PrivateRoute path="/home" component={HomeScreen} isAuthenticated={isLoggedIn} />
+            <Route path="/details" component={DetailsScreen}  />
+
             <Redirect to="/auth/login" />
           </Switch>
         </div>
