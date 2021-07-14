@@ -2,9 +2,12 @@ import { types } from "../types/types";
 
 const initialState = {
   moviesHome: [],
-  page: 1,
-  search:[],
-  detailsMovie: []
+  upcomingMovies: [],
+  pageMoviesHome: 1,
+  pageUpcomingMovies: 1,
+
+  search: [],
+  detailsMovie: [],
 };
 
 export const moviesReducer = (state = initialState, action) => {
@@ -15,22 +18,28 @@ export const moviesReducer = (state = initialState, action) => {
         moviesHome: [...action.payload],
       };
 
+    case types.mvLoadUpcomingMoviesHome:
+      return {
+        ...state,
+        upcomingMovies: [...action.payload],
+      };
+
     case types.mvNextPageMoviesHome:
       return {
         ...state,
-        page: state.page + 1,
+        pageMoviesHome: state.pageMoviesHome + 1,
       };
 
-      case types.mvSearchMovie:
+    case types.mvSearchMovie:
       return {
         ...state,
-        search: [...action.payload]
+        search: [...action.payload],
       };
 
-      case types.mvDetailsMovie:
+    case types.mvDetailsMovie:
       return {
         ...state,
-        detailsMovie: [action.payload]
+        detailsMovie: [action.payload],
       };
 
     default:

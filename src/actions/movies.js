@@ -4,9 +4,16 @@ import { finishLoading, startLoading } from "./auth";
 import { searchMovieAPI } from "../helpers/searchMovie";
 import { loadSearchFilm } from "../helpers/loadSearchMovie";
 import { loadPeople } from "../helpers/loadPopleMovie";
+import { trailerMovie } from "../helpers/loadTrailersDetailsMovie";
+import { upcomingMovies } from "../helpers/loadUpcomingMovies";
 
 export const loadMoviesHome = (movies) => ({
   type: types.mvLoadMoviesHome,
+  payload: movies,
+});
+
+export const LoadUpcomingMovies = (movies) => ({
+  type: types.mvLoadUpcomingMoviesHome,
   payload: movies,
 });
 
@@ -25,14 +32,19 @@ export const detailsMovieAction = (details) => {
     type: types.mvDetailsMovie,
     payload: details,
   };
-}
-  
-
+};
 
 export const startLoadMoviesHome = () => {
+
   return (dispatch) => {
+    dispatch(startLoading());
     loadMovies().then(({ results }) => {
-      dispatch(loadMoviesHome(results));
+      upcomingMovies().then(({ results:nuevas }) => {
+        dispatch(loadMoviesHome(results));
+        dispatch(LoadUpcomingMovies(nuevas));
+        dispatch(finishLoading());
+
+      });
     });
   };
 };
@@ -62,15 +74,15 @@ export const loadDetailsMovie = (id) => {
   let datos = [];
   return (dispatch) => {
     dispatch(startLoading());
-    loadSearchFilm(id).then(details =>{
+    loadSearchFilm(id).then((details) => {
       console.log(details);
-      loadPeople(id).then(people =>{
-        console.log(people);
-        datos= [details,people]
-        dispatch(detailsMovieAction(datos));
-        dispatch(finishLoading());
-  
-      })
-    })
+      loadPeople(id).then((people) => {
+        trailerMovie(id).then((trailers) => {
+          datos = [details, people, trailers];
+          dispatch(detailsMovieAction(datos));
+          dispatch(finishLoading());
+        });
+      });
+    });
   };
 };

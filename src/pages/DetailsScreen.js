@@ -19,13 +19,16 @@ export const DetailsScreen = () => {
       release_date,
       vote_average,
       title,
-      genres
+      genres,
     } = detailsMovie[0][0];
 
     var { cast } = detailsMovie[0][1];
+
+    var { results } = detailsMovie[0][2];
+    var { key: trailer } = results[0] || "";
+
   }
 
-  console.log(vote_average);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -61,15 +64,45 @@ export const DetailsScreen = () => {
                           alt="..."
                           className="img-thumbnail caratula"
                         />
-                          <div className="fs-3 mt-2">
-                          <i className={`bi bi-star-fill ${Math.round(vote_average)>=2?"estrellas":"estrellaSinPunto"}`} ></i>
-                          <i className={`bi bi-star-fill ${Math.round(vote_average)>=4?"estrellas":"estrellaSinPunto"}`} ></i>
-                          <i className={`bi bi-star-fill ${Math.round(vote_average)>=6?"estrellas":"estrellaSinPunto"}`} ></i>
-                          <i className={`bi bi-star-fill ${Math.round(vote_average)>=8?"estrellas":"estrellaSinPunto"}`} ></i>
-                          <i className={`bi bi-star-fill ${Math.round(vote_average)>=10?"estrellas":"estrellaSinPunto"}`} ></i>
-            <br/>
-            <i class="bi bi-award"></i> {vote_average}
-                          </div>
+                        <div className="fs-3 mt-2">
+                          <i
+                            className={`bi bi-star-fill ${
+                              Math.round(vote_average) >= 2
+                                ? "estrellas"
+                                : "estrellaSinPunto"
+                            }`}
+                          ></i>
+                          <i
+                            className={`bi bi-star-fill ${
+                              Math.round(vote_average) >= 4
+                                ? "estrellas"
+                                : "estrellaSinPunto"
+                            }`}
+                          ></i>
+                          <i
+                            className={`bi bi-star-fill ${
+                              Math.round(vote_average) >= 6
+                                ? "estrellas"
+                                : "estrellaSinPunto"
+                            }`}
+                          ></i>
+                          <i
+                            className={`bi bi-star-fill ${
+                              Math.round(vote_average) >= 8
+                                ? "estrellas"
+                                : "estrellaSinPunto"
+                            }`}
+                          ></i>
+                          <i
+                            className={`bi bi-star-fill ${
+                              Math.round(vote_average) >= 10
+                                ? "estrellas"
+                                : "estrellaSinPunto"
+                            }`}
+                          ></i>
+                          <br />
+                          <i class="bi bi-award"></i> {vote_average}
+                        </div>
                       </div>
                       <div class="col-md-8 mt-2">
                         <div className="fs-2">Descripción</div>
@@ -79,57 +112,54 @@ export const DetailsScreen = () => {
                           {overview || "no hay descripción"}{" "}
                         </p>
                         <div className="fs-2 mt-4">
-                          {
-                            genres.map(genero =>{
-                              return(
-                                <span className="badge genero">{genero.name}</span>
-
-                              )
-                            })
-                          }
+                          {genres.map((genero) => {
+                            return (
+                              <span className="badge genero">
+                                {genero.name}
+                              </span>
+                            );
+                          })}
                         </div>
 
                         <div className="mt-4">
-                          <button className="btn btn-primary botonTrailer px-5">
-                            <i className="bi bi-youtube"></i> Ver trailer
-                          </button>
-                        </div>
+{             trailer &&              <a
+                            href={`https://www.youtube-nocookie.com/embed/${trailer}`}
+                            target="_blank"
+                          >
+                            <button className="btn btn-primary botonTrailer px-5">
+                              <i className="bi bi-youtube"></i> Ver trailer
+                            </button>
+                          </a>
+}                        </div>
                       </div>
 
                       <div className="col-md-12 mt-2">
                         <hr />
-                        <div className="fs-2 mt-4">
-                            CAST
-                        </div>
+                        <div className="fs-2 mt-4">CAST</div>
                         <div className="row d-flex justify-content-center animate__animated animate__fadeIn">
-                              {cast.map((actor,index) => {
-                                console.log(actor);
-                                if(index>10){
-                                  return true
+                          {cast.map((actor, index) => {
+                            if (index > 10) {
+                              return true;
+                            }
 
-                                }
-
-                                return (
-                                  
-                                  <div className="col-md-3 divFotoActor">
-                                    <img
-                                      src={
-                                        actor.profile_path
-                                          ? `https://image.tmdb.org/t/p/original/${actor.profile_path}`
-                                          : "https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png"
-                                      }
-                                      className="rounded  actorFoto"
-                                      alt="No exista la foto"
-                                    />
-                                    <p>{actor.character}</p>
-                                    <p>{actor.original_name} </p>
-                                  </div>
-                                );
-                              })}
-                            </div>
-
+                            return (
+                              <div className="col-md-3 divFotoActor">
+                                <img
+                                  src={
+                                    actor.profile_path
+                                      ? `https://image.tmdb.org/t/p/original/${actor.profile_path}`
+                                      : "https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png"
+                                  }
+                                  className="rounded  actorFoto"
+                                  alt="No exista la foto"
+                                />
+                                <p>{actor.character}</p>
+                                <p>{actor.original_name} </p>
+                              </div>
+                            );
+                          })}
+                        </div>
                       </div>
-
                     </div>
                   </div>
                 </div>
