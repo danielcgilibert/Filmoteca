@@ -4,3 +4,26 @@
     border-radius: 20%;
     
 }
+
+.carousel img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: solid rgba(0, 0, 0, 0.294) 10px;
+    max-height: 500px !important;
+}
+
+.carousel {
+    margin-top: 2%;
+    width: 100%;
+
+}
+
+
+.carousel h5{
+    font-size: 50px;
+    background-color: rgba(20, 20, 20, 0.678);
+    border-radius: 50px;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+} 
