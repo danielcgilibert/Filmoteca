@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { nextPageLoadMoviesHome, startLoadMoviesHome } from "../actions/movies";
 import { ListMovies } from "../components/listMovies/ListMovies";
 import { NavBar } from "../components/navbar/NavBar";
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export const HomeScreen = () => {
   const { pageMoviesHome, moviesHome, upcomingMovies } = useSelector(
@@ -20,9 +21,16 @@ export const HomeScreen = () => {
     window.scrollTo(0, document.body.scrollHeight);
   };
 
+
+
+  const handleScrollLoad = e => {
+    // const {scrollTop, clientHeight, scrollHeight } = e.currentTarget
+    console.log("as");
+  }
+
   useEffect(() => {
     dispatch(startLoadMoviesHome());
-  }, [dispatch]);
+  }, []);
 
   // useEffect(() => {
   //   window.scrollTo(0, 0);
@@ -36,18 +44,18 @@ export const HomeScreen = () => {
           <h1 className="display-4 mt-5">Bienvenido a Filmoteca</h1>
         </div>
 
-        <div class="row  d-flex justify-content-center">
+        <div className="row  d-flex justify-content-center">
           <div className="col-md-12 ">
             <div
               id="carouselExampleIndicators"
-              class="carousel slide "
+              className="carousel slide "
               data-ride="carousel"
             >
-              <ol class="carousel-indicators">
+              <ol className="carousel-indicators">
                 <li
                   data-target="#carouselExampleIndicators"
                   data-slide-to="0"
-                  class="active"
+                  className="active"
                 ></li>
                 <li
                   data-target="#carouselExampleIndicators"
@@ -58,14 +66,14 @@ export const HomeScreen = () => {
                   data-slide-to="2"
                 ></li>
               </ol>
-              <div class="carousel-inner">
+              <div className="carousel-inner">
                 {moviesHome.map((movie,index) => {
                   return (
                     <>
                     
                       <div className={`carousel-item ${index===0?"active":""}`}>
                         <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="..." />
-                        <div class="carousel-caption d-none d-md-block">
+                        <div className="carousel-caption d-none d-md-block">
                           <h5>{movie.title} </h5>
                         </div>
                       </div>
@@ -74,62 +82,35 @@ export const HomeScreen = () => {
                 })}
               </div>
               <a
-                class="carousel-control-prev"
+                className="carousel-control-prev"
                 href="#carouselExampleIndicators"
                 role="button"
                 data-slide="prev"
               >
                 <span
-                  class="carousel-control-prev-icon"
+                  className="carousel-control-prev-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Previous</span>
+                <span className="sr-only">Previous</span>
               </a>
               <a
-                class="carousel-control-next"
+                className="carousel-control-next"
                 href="#carouselExampleIndicators"
                 role="button"
                 data-slide="next"
               >
                 <span
-                  class="carousel-control-next-icon"
+                  className="carousel-control-next-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Next</span>
+                <span className="sr-only">Next</span>
               </a>
             </div>
           </div>
         </div>
 
-        <hr className="my-4" />
-        <h2>Mejor Valoradas</h2>
 
-        <div className="row">
-          {loading ? (
-            <div className="col-md-12 d-flex justify-content-center p-3">
-              <div className="spinner-border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            </div>
-          ) : (
-            <>
-              <d iv className="d-flex flex-row-reverse mt-3">
-                <button onClick={handleScroll} className="btn">
-                  <i className="bi bi-arrow-down botonAbajo"></i>
-                </button>
-              </d>
-
-              <ListMovies moviesHome={moviesHome} />
-              <button onClick={handleNextPage} className="login__input mt-3">
-                <i className="bi bi-arrow-down"></i>
-              </button>
-            </>
-          )}
-        </div>
-
-        <hr />
-
-        <div className="row">
+        <div className="row mt-4">
           <h2>Próximas películas </h2>
           <>
             <div className="d-flex flex-row-reverse mt-3">
@@ -143,8 +124,51 @@ export const HomeScreen = () => {
                 <i className="bi bi-arrow-down"></i>
               </button> */}
           </>
-          )
+          
         </div>
+
+
+        <hr className="my-4" />
+        <h2>Mejor Valoradas</h2>
+
+        <div className="row">
+          
+            
+          
+            <>
+              <div  className="d-flex flex-row-reverse mt-3">
+                <button onClick={handleScroll} className="btn">
+                  <i className="bi bi-arrow-down botonAbajo"></i>
+                </button>
+              </div>
+
+
+            
+            <ListMovies moviesHome={moviesHome} />
+
+            <InfiniteScroll
+              dataLength={moviesHome.length} //This is important field to render the next data
+              next={handleNextPage}
+              hasMore={true}
+
+              loader={<div className="col-md-12 d-flex justify-content-center p-3">
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>}
+              pullDownToRefreshThreshold={50}
+
+            >
+
+
+            </InfiniteScroll>
+            
+            </>
+          
+        </div>
+
+
+       
       </div>
     </>
   );

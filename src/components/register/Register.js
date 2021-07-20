@@ -25,8 +25,8 @@ export const Register = () => {
     <>
       <div className="login__main animate__animated animate__fadeIn">
         
-        { msgError && <div class="animate__animated animate__bounceIn alert alert-danger text-center" role="alert">
-          <i class="bi bi-bell"></i> {msgError}
+        { msgError && <div className="animate__animated animate__bounceIn alert alert-danger text-center" role="alert">
+          <i className="bi bi-bell"></i> {msgError}
         </div>}
 
         <h1>Registration</h1>

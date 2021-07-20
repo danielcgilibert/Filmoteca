@@ -15,7 +15,7 @@ export const moviesReducer = (state = initialState, action) => {
     case types.mvLoadMoviesHome:
       return {
         ...state,
-        moviesHome: [...action.payload],
+        moviesHome: [...state.moviesHome,...action.payload],
       };
 
     case types.mvLoadUpcomingMoviesHome:
